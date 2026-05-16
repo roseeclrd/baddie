@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='experience.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.google.com/share?selection.family=Dancing+Script:wght@400..700|Lora:ital,wght@0,400..700;1,400..700|Montserrat:ital,wght@0,100..900;1,100..900">
+    <title>Experience Form</title>
+    <style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #eac6d257;
+    font-family: 'Montserrat', sans-serif;
+    color: #824f2b;
+    box-sizing: border-box;
+}
+        .page-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* FORM WRAPPER (pink card) */
+        .form-wrapper {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 20px;
+            padding: 20px 50px;
+            width: 100%;
+            max-width: 500px; /* comfortable width */
+            box-shadow: 0 14px 35px rgba(236, 170, 182, 0.45);
+        }
+
+        /* HEADER */
+        .form-wrapper h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #824f2b;
+            font-weight: 700;
+        }
+
+        /* FORM FIELDS */
+        .form-wrapper form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-wrapper input,
+        .form-wrapper textarea,
+        .form-wrapper select {
+            padding: 12px 14px;
+            border-radius: 12px;
+            border: 1px solid #eac6d257;
+            font-size: 15px;
+            background: #fff;
+            outline: none;
+            color: #824f2b;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-wrapper input:focus,
+        .form-wrapper textarea:focus,
+        .form-wrapper select:focus {
+            border-color: #f7dbe18e;
+            box-shadow: 0 0 0 3px rgba(236, 170, 182, 0.25);
+        }
+
+        .form-wrapper textarea {
+            resize: none;
+            min-height: 120px;
+        }
+
+        /* SUBMIT BUTTON */
+        .form-wrapper button {
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 14px;
+            border: none;
+            background: #f7dbe18e;
+            color: #824f2b;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-wrapper button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(236, 170, 182, 0.5);
+        }
+.form-wrapper textarea::placeholder,
+.form-wrapper input::placeholder {
+    color: #824f2b;
+
+}
+
+    </style>
+</head>
+<body>
+
+<div class="form-wrapper">
+    <h2>Share your experience</h2>
+
+    <form action="/submitExperience" method="POST">
+        <textarea name="textExp" placeholder="Write your experience" required></textarea>
+
+        <select name="category" required>
+            <option value="">Select category</option>
+            <option value="Domestic Violence">Domestic Violence</option>
+            <option value="Abuse on the road">Abuse on the road</option>
+            <option value="Abuse at workplace">Abuse at workplace</option>
+            <option value="Abuse during travelling">Abuse during travelling</option>
+            <option value="Abuse from a close relative">Abuse from a close relative</option>
+            <option value="Others">Others</option>
+        </select>
+
+        <button type="submit">Submit Experience</button>
+    </form>
+</div>
+
+</body>
+
+</html>

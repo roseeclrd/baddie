@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users / Reviews</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: #eac6d257;
+            color: #824f2b;
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        /* Country filter */
+        form {
+            width: 220px;
+            margin: 0 auto 40px auto;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid #f7dbe18e;
+            font-size: 15px;
+            outline: none;
+        }
+
+        /* Container for review cards */
+        .reviews-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+        }
+
+        /* Review card style */
+        .review-card {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 20px;
+            padding: 20px 30px;
+            box-shadow: 0 14px 35px rgba(236, 170, 182, 0.45);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: left;
+        }
+
+        .review-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(236, 170, 182, 0.55);
+        }
+
+        .review-card p {
+            margin: 6px 0;
+            line-height: 1.5;
+        }
+
+        .review-card strong {
+            font-weight: 700;
+        }
+
+        .no-reviews {
+            font-style: italic;
+            color: #824f2b;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Users / Reviews</h1>
+
+<!-- Country filter -->
+<form method="GET">
+    <select name="country" onchange="this.form.submit()">
+        <option value="All">All countries</option>
+        {% for c in countries %}
+            <option value="{{ c }}" {% if c == selected_country %}selected{% endif %}>
+                {{ c }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+
+<div class="reviews-container">
+    {% for user in users %}
+        <div class="review-card">
+            <p><strong>Location:</strong> {{ user.street }}, {{ user.city }}, {{ user.state }}, {{ user.country }}</p>
+            <p><strong>Rating:</strong> {{ user.rating }}</p>
+            <p><strong>Review:</strong> {{ user.review }}</p>
+        </div>
+    {% else %}
+        <p class="no-reviews">No reviews found.</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>
